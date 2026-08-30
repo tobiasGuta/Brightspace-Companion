@@ -1,0 +1,59 @@
+name: Assemble Brightspace Companion
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".source-parts/READY"
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Assemble and validate extension
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          cat .source-parts/archive.b64.* > /tmp/archive.b64
+          base64 -d /tmp/archive.b64 > /tmp/extension.zip
+
+          rm -rf /tmp/unpacked
+          mkdir -p /tmp/unpacked
+          unzip -q /tmp/extension.zip -d /tmp/unpacked
+
+          src="$(find /tmp/unpacked -mindepth 1 -maxdepth 1 -type d | head -n 1)"
+          test -n "$src"
+          test -f "$src/manifest.json"
+
+          cp -a "$src"/. .
+
+          # Remove temporary publishing machinery so the public repo stays clean.
+          rm -rf .source-parts
+          rm -f .github/workflows/assemble-extension.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+
+          node --check content.js
+          node --check background.js
+          node --check popup.js
+          python -m json.tool manifest.json >/dev/null
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "feat: publish Brightspace Companion v1.0.1"
+          git push
