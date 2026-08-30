@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brightspace Companion</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo">B</div>
+      <div><h1>Brightspace Companion</h1><p>V1.0 · student reminder assistant</p></div>
+    </header>
+
+    <section id="status" class="status">Checking current tab…</section>
+    <p id="source" class="source">Discovery source: —</p>
+
+    <section class="stats">
+      <div><strong id="today">—</strong><span>Due today</span></div>
+      <div><strong id="week">—</strong><span>Next 7 days</span></div>
+      <div><strong id="classes">—</strong><span>Classes today</span></div>
+    </section>
+
+    <button id="todayBtn" class="primary">Open Today</button>
+    <button id="scheduleBtn" class="secondary">Class schedule & reminders</button>
+    <button id="scan" class="secondary">Sync Brightspace now</button>
+    <button id="testNotification" class="secondary">Test notification</button>
+
+    <p class="note">Assignment reminders use your last Brightspace sync. New announcements and deadline changes are checked whenever Companion syncs. Class reminders use the schedule saved locally in Edge.</p>
+    <p class="hint">Shortcut: <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
