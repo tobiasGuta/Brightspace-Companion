@@ -67,6 +67,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return;
   }
 
+  if (message?.type === "BC_NOTIFICATION_LOG") {
+    appendNotificationLog(message.entry);
+    return;
+  }
+
   if (message?.type === "BC_RELIABILITY_REQUEST_SCAN" && sender.tab?.id) {
     chrome.tabs.sendMessage(sender.tab.id, { type: "BC_SCAN" })
       .then(response => sendResponse(response || { ok: true }))
