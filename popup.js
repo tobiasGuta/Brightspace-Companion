@@ -26,15 +26,23 @@ async function send(type, extra = {}) {
 
 async function sendTestNotification() {
   const notificationId = "bc-test-notification";
+  const title = "Brightspace Companion";
+  const message = "Notifications are working ✓";
   try {
     await chrome.notifications.clear(notificationId);
     await chrome.notifications.create(notificationId, {
       type: "basic",
       iconUrl: "icons/icon128.png",
-      title: "Brightspace Companion",
-      message: "Notifications are working ✓",
+      title,
+      message,
       priority: 1
     });
+    try {
+      await chrome.runtime.sendMessage({
+        type: "BC_NOTIFICATION_LOG",
+        entry: { kind: "test", title, message, notificationId }
+      });
+    } catch {}
     testNotificationBtn.textContent = "Notification sent ✓";
     statusEl.className = "status good";
     statusEl.textContent = "Test notification sent. Check your Windows notification area.";
