@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Brightspace Companion",
-  "version": "1.0.1",
-  "description": "A lightweight CUNY Brightspace student companion for current-semester classes, deadlines, announcements, reminders, and important changes.",
+  "version": "1.0.2",
+  "description": "A lightweight CUNY Brightspace student companion for current-semester classes, deadlines, tasks, announcements, reminders, and important changes.",
   "permissions": [
     "storage",
     "activeTab",
@@ -13,7 +13,7 @@
     "https://brightspace.cuny.edu/*"
   ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background-v102.js"
   },
   "action": {
     "default_title": "Brightspace Companion",
@@ -45,10 +45,12 @@
         "https://brightspace.cuny.edu/*"
       ],
       "css": [
-        "content.css"
+        "content.css",
+        "reliability.css"
       ],
       "js": [
-        "content.js"
+        "content.js",
+        "reliability.js"
       ],
       "run_at": "document_idle"
     }
