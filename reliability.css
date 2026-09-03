@@ -1,0 +1,223 @@
+
+.bc-reliability-global {
+  margin: 0 0 10px;
+}
+.bc-reliability-health {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px 11px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,.035);
+}
+.bc-reliability-compact {
+  margin-bottom: 8px;
+}
+.bc-reliability-health-copy {
+  min-width: 0;
+  flex: 1;
+}
+.bc-reliability-health-copy strong,
+.bc-reliability-health-copy span {
+  display: block;
+}
+.bc-reliability-health-copy strong {
+  font-size: 11.5px;
+}
+.bc-reliability-health-copy span {
+  margin-top: 3px;
+  color: var(--bc-muted);
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+.bc-reliability-good {
+  border-color: rgba(70, 211, 142, .2);
+}
+.bc-reliability-warn {
+  border-color: rgba(244, 183, 64, .28);
+  background: rgba(244, 183, 64, .055);
+}
+.bc-reliability-danger {
+  border-color: rgba(246, 101, 101, .32);
+  background: rgba(246, 101, 101, .065);
+}
+.bc-reliability-sync {
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 9px;
+  cursor: pointer;
+  background: rgba(255,255,255,.08);
+  color: inherit;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+}
+.bc-reliability-sync:disabled {
+  cursor: default;
+  opacity: .6;
+}
+
+.bc-task-view {
+  display: grid;
+  gap: 10px;
+}
+.bc-task-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.bc-task-summary > div {
+  display: grid;
+  gap: 2px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--bc-card);
+}
+.bc-task-summary strong {
+  font-size: 18px;
+  line-height: 1;
+}
+.bc-task-summary span {
+  color: var(--bc-muted);
+  font-size: 10px;
+}
+.bc-task-summary-danger strong {
+  color: #ff8d8d;
+}
+.bc-task-trust-note {
+  padding: 9px 10px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 9px;
+  color: var(--bc-muted);
+  background: rgba(255,255,255,.025);
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+.bc-task-trust-note strong {
+  color: inherit;
+}
+.bc-task-section {
+  display: grid;
+  gap: 7px;
+}
+.bc-task-list {
+  display: grid;
+  gap: 7px;
+}
+.bc-task-card {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid rgba(255,255,255,.055);
+  border-radius: 10px;
+  background: var(--bc-card);
+}
+.bc-task-overdue {
+  border-color: rgba(246, 101, 101, .25);
+}
+.bc-task-completed {
+  opacity: .74;
+}
+.bc-task-open {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.bc-task-kind {
+  color: var(--bc-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.bc-task-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11.5px;
+}
+.bc-task-meta {
+  overflow: hidden;
+  color: var(--bc-muted);
+  font-size: 10px;
+  line-height: 1.3;
+}
+.bc-task-actions {
+  flex: 0 0 auto;
+  display: grid;
+  align-content: center;
+  justify-items: end;
+  gap: 6px;
+}
+.bc-task-status {
+  color: var(--bc-muted);
+  font-size: 9.5px;
+  font-weight: 650;
+}
+.bc-task-overdue .bc-task-status {
+  color: #ff9b9b;
+}
+.bc-task-toggle {
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 8px;
+  cursor: pointer;
+  background: rgba(95,136,255,.16);
+  color: #dce6ff;
+  font: inherit;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+.bc-task-reopen {
+  background: rgba(255,255,255,.06);
+  color: inherit;
+}
+.bc-notification-log {
+  display: grid;
+  gap: 6px;
+}
+.bc-notification-log-row {
+  display: grid;
+  gap: 2px;
+  padding: 8px 9px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.035);
+}
+.bc-notification-log-row strong {
+  font-size: 10.5px;
+}
+.bc-notification-log-row span,
+.bc-notification-log-row time {
+  color: var(--bc-muted);
+  font-size: 9.5px;
+  line-height: 1.3;
+}
+
+@media (max-width: 560px) {
+  .bc-reliability-health,
+  .bc-task-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .bc-reliability-sync,
+  .bc-task-toggle {
+    width: 100%;
+  }
+  .bc-task-actions {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    justify-items: stretch;
+  }
+}
